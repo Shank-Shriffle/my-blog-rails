@@ -1,0 +1,40 @@
+FAQ
+
+Q1. render vs redirect_to?
+Ans: If you're using render, when the user refreshes the page, it will submit the previous POST request again. This may cause undesired results like duplicate purchase and others.
+But if you're using redirect_to, when the user refreshes the page, it will just request that same page again. 
+So the place where redirect_to should be used is when you're doing a HTTP POST request and you don't want the user to resubmit the request when it's done (which may cause duplicate items and other problems).
+
+Q2. Datatypes in Rails?
+Ans: Link: https://dev.to/asyraf/rails-activerecord-data-types-32ip
+
+The ActiveRecord data types available in Rails 6;
+:primary_key
+:string: short text
+:text: long text
+:integer: whole numbers [-4, 0, 9, 772]
+:float: double-precision floating-point numbers [3244.90]
+:decimal: high-precision floating-point numbers [3244.2342343789212]
+:datetime
+:time
+:date
+:binary: 1 / 0
+:boolean: true or false
+
+------Migration------
+
+Q1. Creating Migration?
+Ans: Migration files are automatically generated when we generate a new model. And the column_name:datatype provide while creating model (i.e. title:string, body:text) are included as columns in migration file (i.e. t.string :title, t.text :body).
+
+Q2. Manipulating Database?
+Ans: Command "$ rails db:migrate" is used to manipulate the database. It can be seen in db/schema.rb after running db:migrate.
+
+Q3. Adding new column to already generated Table/Model and creating new Migration?
+Ans: For perfoming such changes we will create new Migrations for the particular Table/Model. Like, 
+"$ rails generate migration AddStatusToArticles status:string"
+"$ rails generate migration AddStatusToComments status:string"
+The class name (i.e. AddStatusToComments) should be relevant to the task. 
+Now to add new column we use predefined method "add_column" inside def change.
+(create_table, change_column, add_index, remove_column are some other Migration methods.)
+More migration methods: https://edgeapi.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html
+

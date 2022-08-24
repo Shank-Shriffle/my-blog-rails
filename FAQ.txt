@@ -21,6 +21,25 @@ The ActiveRecord data types available in Rails 6;
 :binary: 1 / 0
 :boolean: true or false
 
+Q3. Types of form fieds?
+Ans: Types of form fields in Rails (html.erb) :
+
+<%= form.text_area :message, size: "70x5" %>
+<%= form.hidden_field :parent_id, value: "foo" %>
+<%= form.password_field :password %>
+<%= form.number_field :price, in: 1.0..20.0, step: 0.5 %>
+<%= form.range_field :discount, in: 1..100 %>
+<%= form.date_field :born_on %>
+<%= form.time_field :started_at %>
+<%= form.datetime_local_field :graduation_day %>
+<%= form.month_field :birthday_month %>
+<%= form.week_field :birthday_week %>
+<%= form.search_field :name %>
+<%= form.email_field :address %>
+<%= form.telephone_field :phone %>
+<%= form.url_field :homepage %>
+<%= form.color_field :favorite_color %>
+
 ------Migration------
 
 Q1. Creating Migration?
@@ -38,3 +57,38 @@ Now to add new column we use predefined method "add_column" inside def change.
 (create_table, change_column, add_index, remove_column are some other Migration methods.)
 More migration methods: https://edgeapi.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html
 
+------Association------
+
+Q1. Types of Associations in Rails?
+Ans: Rails supports six types of associations:
+
+belongs_to
+has_one
+has_many
+has_many :through
+has_one :through
+has_and_belongs_to_many
+
+------Active Record------
+
+Q1.
+
+------Routes------
+
+Q1. resource vs resources?
+Ans: 1. As we can see resources generated one extra route for index action. index action is intended to display list of resource.
+2. Singular routes don’t have ID of resource being worked on.
+3. Both singular and plural resource routes route request to pluralized controller.
+
+Because you might want to use the same controller for a singular route (/account) and a plural route (/accounts/45), singular resources map to plural controllers. So that, for example, resource :photo and resources :photos creates both singular and plural routes that map to the same controller (PhotosController).
+
+Q2. How to use 'namespace'? 
+Ans: To organize groups of controllers under a folder we use namespace.
+1. Group controllers under a folder (ex: admin)
+2. Put resources/routes in namespace block in routes.rb (ex: namespace :admin do ... end) 
+3. Put controller action in module. (ex: module Admin ... end)
+4. Also group the respective Views under the same folder name (ex: admin)
+5. Also change in root in routes.rb
+6. Change the Url/Path helper methods in all views (ex: article_path)
+
+namespace changes the URI Pattern, Prefix, Path Helper methods and Controller#Actions and prefixes it with the folder name (here, admin).

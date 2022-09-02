@@ -57,6 +57,18 @@ Now to add new column we use predefined method "add_column" inside def change.
 (create_table, change_column, add_index, remove_column are some other Migration methods.)
 More migration methods: https://edgeapi.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html
 
+Q4. add_reference vs add_foreign_key?
+Ans: add_foreign_key(from_table, to_table, **options) - 
+It adds a new foreign key. from_table is the table with the primary key column, to_table contains the referenced primary key.
+Ex- add_foreign_key :articles, :authors
+
+add_reference(table_name, ref_name, **options) - 
+This is meant as a shortcut for creating a column, index and foreign key at the same time.
+Ex- 1. add_reference(:products, :supplier, foreign_key: true)
+2. add_reference(:products, :user, index: false)
+3. add_reference(:products, :supplier, polymorphic: true)
+
+
 ------Association------
 
 Q1. Types of Associations in Rails?

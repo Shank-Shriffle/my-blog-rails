@@ -81,6 +81,13 @@ has_many :through
 has_one :through
 has_and_belongs_to_many
 
+Q2. Where to use dependent: :destroy?
+Ans: (1) In User model, has_many :receipts, dependent: :destroy
+If user is destroyed then its associated receipts will be destroyed as well.
+
+(2) In Receipt model, belongs_to :user, dependent: :destroy
+If receipt is destroyed then its parent user will be destroyed, not other associated receipts would not be destroyed but would be orphaned. 
+
 ------Active Record------
 
 Q1.
